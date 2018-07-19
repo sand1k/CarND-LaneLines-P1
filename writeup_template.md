@@ -46,16 +46,10 @@ After deleting:<br>
 <img src="./img/05_hough.png" width="70%"><br>
 
 7. Draw single lane on the left and right lanes. In order to do this, I modified the draw_lines() function by:
-
-    a. Filtering out line segments with slope less than 0.5 (these segments are too horizontal to part of lanes, which we are interested in)
-        
-    b. Separating line segments by their location. This is required to find which segments belong to the left lane and which to the right. <br>
-<img src="./img/separate_seg.png" width="80%">
-        
-    c. Averaging segments of each lane. For each group of segments from step II we search for the least-squares solution for the line, which goes through all end points of segments belonging to the specified lane.
-         
-    d. Extrapolating found lane position. Using found coefficients m and c (y = m*x + c) we draw each lane starting from the bottom of the image till the top of region of interest.
-<img src="./img/average.png" width="80%">
+   * Filtering out line segments with slope less than 0.5 (these segments are too horizontal to part of lanes, which we are interested in)      
+   * Separating line segments by their location. This is required to find which segments belong to the left lane and which to the right. <br><img src="./img/separate_seg.png" width="80%">
+   * Averaging segments of each lane. For each group of segments from step II we search for the least-squares solution for the line, which goes through all end points of segments belonging to the specified lane.      
+   * Extrapolating found lane position. Using found coefficients m and c (y = m*x + c) we draw each lane starting from the bottom of the image till the top of region of interest. <br><img src="./img/average.png" width="80%">
 
 
 8. Finally we draw found lanes on the original image.
